@@ -1,0 +1,21 @@
+﻿this.props.navigation.navigate('RouteName')
+如果堆栈导航器尚未位于堆栈中则将新路线推送到
+堆栈导航器中并跳转，否则会跳转到该屏幕
+
+this.props.navigation.push('RouteName')
+直接将新路线推送到堆栈导航器中并跳转，无论堆栈
+中会否有路线
+
+this.props.navigation.goBack()
+与状态栏自带的回退按钮功能相同
+
+this.props.navigation.popToTop()
+回到堆栈中的第一个屏幕	
+
+this.props.navigation.navigate('RoutName',{/* params go here */})
+路由之间的传递是通过将参数放入一个对象作为
+navigation.navigate函数的第二个参数来传递的
+
+const name = this.props.navigation.getParam('name', 'Peter');
+在navigation.state中寻找‘name’，如果未找到则返回
+第二个参数‘Peter’
