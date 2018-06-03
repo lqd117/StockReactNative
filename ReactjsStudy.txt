@@ -1,4 +1,5 @@
-﻿this.props.navigation.navigate('RouteName')
+﻿
+this.props.navigation.navigate('RouteName')
 如果堆栈导航器尚未位于堆栈中则将新路线推送到
 堆栈导航器中并跳转，否则会跳转到该屏幕
 
