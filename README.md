@@ -9,3 +9,7 @@ npm i react-native-vector-icons --save && react-native link react-native-vector-
 
 # StockReactNative
 something will be better
+
+storage finish
+
+finished!!!!!

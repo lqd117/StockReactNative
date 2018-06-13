@@ -3,37 +3,58 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableHighlight,
   Dimensions,
-  AsyncStorage
+  AsyncStorage,
+  TextInput,
+  FlatList, 
+  Image,
+  TouchableOpacity,
 } from 'react-native';
-
-import Storage from './app/storage/storage.js'
-export default class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      data:[]
-    };
+import {Icon,List,ListItem} from 'react-native-elements';
+import Details from './app/details/details.js';
+import Search from './app/search/search.js';
+import MyStock from './app/mystock/mystock.js'
+import { createStackNavigator } from 'react-navigation'; 
+import FadeInView from './app/fadeview/FadeView.js';
+class HomeScreen extends React.Component {
+  static navigationOptions = {
+    header: null,
+  };
+  componentDidMount() {
+    const that = this
+    setTimeout(function(){that.props.navigation.navigate('Search')},2236)
   }
   render() {
     return (
-      <View>
-        <Text>{JSON.stringify(this.state.data)}</Text>
-        <TouchableHighlight onPress={()=>Storage.addData('temp')}>
-          <Text>增加</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={()=>Storage.getData(this)}>
-          <Text>更新</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={()=>Storage.clearall()}>
-          <Text>清除所有</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={()=>Storage.clear('temp')}>
-          <Text>清除</Text>
-        </TouchableHighlight>
-      </View>
-    );
+    <FadeInView style={{ flex:1,backgroundColor: 'black', }}>
+     <Image style={styles.icon} source={require('./logo.png')} />
+    </FadeInView>
+    )
+  }
+}
+const styles=StyleSheet.create({
+  icon:{
+    height:Dimensions.get('window').height,
+    width:Dimensions.get('window').width,
+    marginLeft:'auto',
+    marginRight:'auto',
+  }
+});
+const RootStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Details: Details,
+    Search:Search,
+    MyStock:MyStock,
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+export default class App extends Component {
+  render() {
+    return (
+      <RootStack />
+    )
   }
 }
