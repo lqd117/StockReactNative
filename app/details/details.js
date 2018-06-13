@@ -122,6 +122,19 @@ class Details extends Component {
           gid={this.state.cur.result[0].data.gid}
         />
         </PullView>
+        <View style={styles.footer}>
+          <View style={styles.footermybutton}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('MyStock')}>
+              <Text style={styles.footertext}>My</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.divide}/>
+          <View style={styles.footersearchbutton}>
+            <TouchableOpacity onPress={()=> this.props.navigation.navigate('Search')}>
+              <Text style={styles.footertext}>Search</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     );
   }
@@ -175,6 +188,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 60
+  },
+  footer:{
+    flexDirection:'row',
+    borderTopColor: 'white',
+    borderTopWidth: 1
+  },
+  footermybutton:{
+    height:60,
+    width:200,
+  },
+  footersearchbutton:{
+    height:60,
+    width:200,
+  },
+  footertext:{
+    left:80,
+    fontSize:20,
+    color:'white',
+  },
+  divide:{
+    height:60,
+    width:1,
+    backgroundColor:'gray'
   }
 });
 
